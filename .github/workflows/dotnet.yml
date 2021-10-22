@@ -28,7 +28,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: webpack artifacts
-        path: public/
+        path: '{{env.PUBLISH_PATH}}/publish'
       
   Build-and-Push-Docker-Image:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: webpack artifacts
-        path: public
+        path: '{{env.PUBLISH_PATH}}/publish'
     - name: Build container image
       uses: docker/build-push-action@v1
       with:
